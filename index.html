@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鹈鹕的海岸骑行 · Pelican Cruise</title>
+<style>
+:root{color-scheme:light;--ink:#233e43;--cycle:1.2s}
+*{box-sizing:border-box}body{margin:0;background:#f7f4eb;color:var(--ink);font-family:Arial,"Microsoft YaHei",sans-serif;min-height:100vh;display:grid;place-items:center;padding:32px}main{width:min(1120px,100%)}header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}.brand{font-size:13px;font-weight:700;letter-spacing:3px}.issue{font-size:11px;letter-spacing:2px;color:#71817b}.scene{position:relative;overflow:hidden;border-radius:26px;background:#dcece4;box-shadow:0 20px 70px #344f4210}h1{margin:0;font-size:clamp(30px,5vw,59px);letter-spacing:-2px;line-height:1.1;font-weight:600}.intro{position:absolute;left:5%;top:8%;z-index:1;pointer-events:none}.intro p{font-size:13px;letter-spacing:2px;color:#617c72;margin:15px 0}.tag{display:inline-block;font-size:10px;letter-spacing:2px;padding:7px 11px;border:1px solid #a9c6b8;border-radius:30px;margin-bottom:17px}svg{display:block;width:100%;height:auto}footer{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-top:23px;font-size:12px;color:#71817b}.caption{letter-spacing:1px}.controls{display:flex;align-items:center;gap:18px}button{border:1px solid #c5cfc5;border-radius:30px;padding:10px 18px;background:transparent;color:var(--ink);cursor:pointer;font:inherit}button:hover{background:#e6ebdf}button:focus-visible{outline:3px solid #de884a;outline-offset:4px}.dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#da884c;margin-right:8px}
+/* All moving elements are SVG groups. Explicit SVG coordinates anchor rotations. */
+.wheel{animation:spin var(--cycle) linear infinite;transform-box:view-box}.rear{transform-origin:305px 420px}.front{transform-origin:585px 420px}.crank{transform-origin:440px 398px;animation:spin var(--cycle) linear infinite}.pedal-a{transform-origin:470px 398px;animation:counter var(--cycle) linear infinite}.pedal-b{transform-origin:410px 398px;animation:counter var(--cycle) linear infinite}.rider{animation:bob .6s ease-in-out infinite}.wing{transform-origin:423px 287px;animation:wing 1.2s ease-in-out infinite}.scarf{transform-origin:487px 257px;animation:flutter .6s ease-in-out infinite}.shadow{transform-origin:445px 506px;animation:shadow .6s ease-in-out infinite}.road{animation:travel 1.8s linear infinite}.clouds{animation:travel 24s linear infinite}.leg-near{animation:pedalNear var(--cycle) linear infinite}.leg-far{animation:pedalFar var(--cycle) linear infinite}.paused *{animation-play-state:paused!important}
+@keyframes spin{to{transform:rotate(360deg)}}@keyframes counter{to{transform:rotate(-360deg)}}@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}@keyframes wing{50%{transform:rotate(-3deg)}}@keyframes flutter{50%{transform:rotate(6deg)}}@keyframes shadow{50%{transform:scaleX(.97);opacity:.7}}@keyframes travel{to{transform:translateX(-360px)}}
+/* The toes follow the same four quarter-turn positions as the pedal crank. */
+@keyframes pedalNear{0%,100%{d:path('M 427 323 Q 475 343 470 398')}25%{d:path('M 427 323 Q 469 371 440 428')}50%{d:path('M 427 323 Q 403 358 410 398')}75%{d:path('M 427 323 Q 465 337 440 368')}}
+@keyframes pedalFar{0%,100%{d:path('M 409 321 Q 386 357 410 398')}25%{d:path('M 409 321 Q 445 331 440 368')}50%{d:path('M 409 321 Q 463 344 470 398')}75%{d:path('M 409 321 Q 454 370 440 428')}}
+@media(max-width:600px){body{padding:18px}.issue{display:none}.intro{top:6%}.tag{display:none}.intro p{font-size:10px;margin-top:7px;letter-spacing:1px}h1{font-size:30px}.scene{border-radius:18px}footer{align-items:flex-start}.caption{font-size:10px;line-height:1.8}.controls{gap:0}.controls>span{display:none}button{white-space:nowrap}}
+@media(prefers-reduced-motion:reduce){.scene *{animation-play-state:paused!important}}
+</style>
+</head>
+<body>
+<main>
+<header><div class="brand">PELICAN / CLUB</div><div class="issue">COASTAL RIDE — NO. 006</div></header>
+<section class="scene" aria-label="卡通鹈鹕骑自行车的动画">
+<div class="intro"><span class="tag">THE SLOW LIFE SERIES</span><h1>顺着海风，<br>慢慢骑。</h1><p>A little ride. A lovely day.</p></div>
+<svg viewBox="0 0 1000 620" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+<title id="title">鹈鹕的海岸骑行</title><desc id="desc">一只白色鹈鹕，有橙黄色的大喙和喉囊，戴着绿色围巾骑着珊瑚橘自行车。双轮持续转动，双腿交替踩踏，海岸背景向后移动。</desc>
+<defs>
+<g id="cloud" fill="#f5f8ee"><path d="M0 0c-5-16 14-26 27-17 2-28 44-31 51-5 18-10 38 3 34 22Z"/></g>
+<g id="wheel"><circle r="81" fill="#f6f3df" stroke="#29464b" stroke-width="10"/><circle r="69" fill="#dcece4" stroke="#b3c9bd" stroke-width="2"/><g stroke="#7e9e95" stroke-width="2.5"><path d="M-69 0H69M0-69V69M-49-49 49 49M-49 49 49-49"/></g><circle r="10" fill="#29464b"/><path d="M-17-75A77 77 0 0 1 25-73" fill="none" stroke="#fffaf0" stroke-width="3" stroke-linecap="round"/></g>
+<g id="marks" fill="none" stroke-linecap="round"><path d="M0 548h56m87 26h25m105-26h50" stroke="#f8f3de" stroke-width="5"/><path d="M55 510h20m154 84h32" stroke="#c1cab0" stroke-width="3"/></g>
+</defs>
+<circle cx="810" cy="113" r="48" fill="#f7cb75"/><circle cx="810" cy="113" r="63" fill="none" stroke="#f7cb75" opacity=".28"/>
+<g class="clouds"><use href="#cloud" x="560" y="107"/><use href="#cloud" x="920" y="177"/><use href="#cloud" x="1280" y="107"/></g>
+<path d="M0 358Q130 298 278 351T579 332T1000 341V476H0Z" fill="#b8d4c4"/>
+<path d="M0 399Q202 342 358 384T693 376T1000 378V482H0Z" fill="#9fc5b5"/>
+<path d="M0 427Q175 406 352 428T695 420T1000 414V496H0Z" fill="#c2dcd0"/>
+<path d="M0 490Q410 458 1000 481V620H0Z" fill="#e5dfc4"/>
+<path d="M0 490Q410 458 1000 481" fill="none" stroke="#f5efd8" stroke-width="7"/>
+<g class="road"><use href="#marks"/><use href="#marks" x="360"/><use href="#marks" x="720"/><use href="#marks" x="1080"/></g>
+<!-- The riding illustration sits to the right of the editorial title. -->
+<g transform="translate(150 0)">
+<ellipse class="shadow" cx="445" cy="506" rx="221" ry="12" fill="#65795d" opacity=".16"/>
+<g class="rider">
+
+<g class="wheel rear"><use href="#wheel" x="305" y="420"/></g>
+<g class="wheel front"><use href="#wheel" x="585" y="420"/></g>
+<!-- Far leg passes behind the frame. -->
+<path class="leg-far" d="M409 321Q386 357 410 398" fill="none" stroke="#c88436" stroke-width="12" stroke-linecap="round"/>
+<g fill="none" stroke-linejoin="round" stroke-linecap="round">
+<path d="M305 420 376 322 440 398 305 420M376 322 548 322 440 398M548 322 585 420" stroke="#a74e3d" stroke-width="13"/>
+<path d="M305 420 376 322 440 398 305 420M376 322 548 322 440 398M548 322 585 420" stroke="#ea8060" stroke-width="9"/>
+<path d="M376 322 366 299M548 322 536 277 557 267" stroke="#29464b" stroke-width="8"/>
+<path d="M538 276 561 265Q579 262 578 278" stroke="#29464b" stroke-width="9"/>
+<path d="M350 299H387" stroke="#29464b" stroke-width="12"/>
+<path d="M321 419 438 389Q458 393 448 410L320 432Q309 427 321 419Z" stroke="#68847b" stroke-width="3"/>
+</g>
+<circle cx="440" cy="398" r="18" fill="#f7e4be" stroke="#29464b" stroke-width="4"/>
+<g class="crank" stroke="#29464b" stroke-linecap="round"><path d="M410 398H470" stroke-width="6"/><g class="pedal-b"><path d="M398 398h24" stroke-width="7"/></g><g class="pedal-a"><path d="M458 398h24" stroke-width="7"/></g></g>
+<!-- Broad body, long neck, oversized bill and pouch define the pelican silhouette. -->
+<path d="M367 279 328 254 338 286 316 273Q321 308 368 313Z" fill="#e6e4ce"/>
+<path d="M357 275Q378 247 421 258Q451 264 455 227Q454 189 486 183Q515 175 528 201Q542 224 521 246Q497 262 491 294Q481 326 434 337Q372 347 351 314Q339 291 357 275Z" fill="#fffbea" stroke="#29464b" stroke-width="3.5" stroke-linejoin="round"/>
+<path d="M482 247Q490 277 470 305Q447 337 400 331Q451 350 478 321Q495 299 500 260Z" fill="#e8e7d3"/>
+<path class="wing" d="M371 281Q395 267 435 281Q450 291 456 304Q418 327 384 307Q371 297 371 281Z" fill="#e8ead8" stroke="#29464b" stroke-width="3"/>
+<path d="M386 291Q407 307 435 301" fill="none" stroke="#b4c5b4" stroke-width="3" stroke-linecap="round"/>
+<g class="scarf"><path d="M487 258Q458 263 432 245L418 249 425 262Q453 276 484 268Z" fill="#357d69"/><path d="M474 262Q448 275 431 273L443 287Q469 282 486 267Z" fill="#276553"/></g>
+<path d="M487 253 508 261 499 274 480 266Z" fill="#438c76"/>
+<path d="M516 221 626 226Q606 276 561 269Q531 263 516 233Z" fill="#efb54b" stroke="#29464b" stroke-width="3.5" stroke-linejoin="round"/>
+<path d="M528 237Q550 263 580 257" fill="none" stroke="#d6953c" stroke-width="3" stroke-linecap="round"/>
+<path d="M516 216Q565 209 636 226Q642 229 634 233L516 232Z" fill="#f5c766" stroke="#29464b" stroke-width="3.5" stroke-linejoin="round"/>
+<circle cx="505" cy="207" r="5" fill="#233e43"/><circle cx="506.5" cy="205.5" r="1.5" fill="white"/>
+<path d="M494 194Q501 190 507 194" fill="none" stroke="#29464b" stroke-width="3" stroke-linecap="round"/>
+<ellipse cx="507" cy="225" rx="8" ry="5" fill="#efb69a"/>
+<path d="M469 284Q503 280 552 272" fill="none" stroke="#29464b" stroke-width="11" stroke-linecap="round"/>
+<path d="M469 282Q503 278 550 270" fill="none" stroke="#f4f0db" stroke-width="7" stroke-linecap="round"/>
+<path class="leg-near" d="M427 323Q475 343 470 398" fill="none" stroke="#e7a744" stroke-width="12" stroke-linecap="round"/>
+<circle cx="440" cy="398" r="5" fill="#29464b"/>
+</g>
+</g>
+<g transform="translate(889 453)" stroke="#718f74" stroke-width="3" fill="none" stroke-linecap="round"><path d="M0 20Q-2 1-12-5M0 20Q4-10 14-17M1 21Q12 7 23 10"/></g>
+<text x="50" y="586" font-family="Arial,sans-serif" font-size="10" letter-spacing="3" fill="#7d8b72">LESS HURRY, MORE HAPPY.</text>
+</svg>
+</section>
+<footer><span class="caption">海岸骑行日记 &nbsp; / &nbsp; 今天也要轻轻松松。</span><div class="controls"><span><i class="dot"></i>ON A LITTLE ADVENTURE</span><button type="button" id="toggle" aria-pressed="false">暂停动画</button></div></footer>
+</main>
+<script>
+// JavaScript only toggles playback; all animation is driven by CSS keyframes.
+const button=document.getElementById('toggle');
+const scene=document.querySelector('.scene');
+const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
+if(reduced.matches){button.textContent='已减少动态';button.disabled=true;}
+button.addEventListener('click',()=>{const paused=scene.classList.toggle('paused');button.setAttribute('aria-pressed',String(paused));button.textContent=paused?'继续骑行':'暂停动画';});
+</script>
+</body>
+</html>
+
