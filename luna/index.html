@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>鹈鹕骑自行车 · SVG CSS Animation</title>
+  <style>
+    :root {
+      --sky: #8dd9f4;
+      --cream: #fff8df;
+      --ink: #24364b;
+      --orange: #f2994a;
+      --teal: #27aeb0;
+      --blue: #3778c8;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background: #dff6fa;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+
+    .scene {
+      width: min(100vw, 1100px);
+      aspect-ratio: 16 / 9;
+      position: relative;
+      overflow: hidden;
+      background: var(--sky);
+      border-radius: 24px;
+      box-shadow: 0 22px 55px rgb(36 54 75 / 22%);
+    }
+
+    svg { display: block; width: 100%; height: 100%; }
+
+    .bike-and-bird { transform-box: fill-box; transform-origin: center bottom; animation: ride-bob 900ms ease-in-out infinite; }
+    .wheel { transform-box: fill-box; transform-origin: center; animation: wheel-spin 850ms linear infinite; }
+    .pedal-crank { transform-box: fill-box; transform-origin: center; animation: wheel-spin 850ms linear infinite; }
+    .leg-front { transform-box: fill-box; transform-origin: 48% 12%; animation: pedal-front 850ms ease-in-out infinite; }
+    .leg-back { transform-box: fill-box; transform-origin: 48% 12%; animation: pedal-back 850ms ease-in-out infinite; }
+    .clouds { animation: cloud-drift 18s linear infinite; }
+    .clouds-slow { animation: cloud-drift 28s linear infinite reverse; opacity: .7; }
+    .ground-lines { animation: ground-move 2.2s linear infinite; }
+    .feather { animation: feather-flutter 1.2s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: 100% 50%; }
+
+    @keyframes wheel-spin { to { transform: rotate(360deg); } }
+    @keyframes pedal-front { 0%, 100% { transform: rotate(28deg); } 50% { transform: rotate(-34deg); } }
+    @keyframes pedal-back { 0%, 100% { transform: rotate(-34deg); } 50% { transform: rotate(28deg); } }
+    @keyframes ride-bob { 0%, 100% { transform: translateY(0) rotate(-.5deg); } 50% { transform: translateY(-7px) rotate(.5deg); } }
+    @keyframes cloud-drift { from { transform: translateX(0); } to { transform: translateX(-160px); } }
+    @keyframes ground-move { from { transform: translateX(0); } to { transform: translateX(-180px); } }
+    @keyframes feather-flutter { from { transform: rotate(-3deg); } to { transform: rotate(4deg); } }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="scene" aria-label="一只卡通鹈鹕正在骑自行车的动画">
+    <svg viewBox="0 0 1100 619" role="img" aria-labelledby="title desc">
+      <title id="title">卡通鹈鹕骑自行车</title>
+      <desc id="desc">扁平化风格的白色鹈鹕骑着蓝色自行车，车轮旋转，双腿交替踩踏。</desc>
+
+      <rect width="1100" height="619" fill="url(#skyGradient)"/>
+      <circle cx="910" cy="112" r="54" fill="#ffe28b" opacity=".9"/>
+      <g class="clouds" fill="#fff" opacity=".82">
+        <path d="M80 142c18-36 70-39 91-5 28-24 77-8 77 30H49c0-16 13-25 31-25z"/>
+        <path d="M730 205c17-31 59-32 78-4 26-20 64-4 64 25H699c0-12 12-21 31-21z"/>
+      </g>
+      <g class="clouds-slow" fill="#fff" opacity=".65">
+        <path d="M373 78c14-28 54-29 71-3 20-18 53-4 53 23H349c0-11 9-20 24-20z"/>
+      </g>
+
+      <path d="M0 425 Q180 355 360 420 T730 410 T1100 405 V619 H0Z" fill="#9bd47a"/>
+      <path d="M0 490 Q210 438 415 492 T820 480 T1100 474 V619 H0Z" fill="#62b96b"/>
+      <g class="ground-lines" stroke="#3c9b61" stroke-width="8" stroke-linecap="round" opacity=".62">
+        <path d="M0 552h130m65 0h145m90 0h160m80 0h180m65 0h135"/>
+        <path d="M-40 585h170m70 0h90m100 0h180m80 0h130m80 0h170"/>
+      </g>
+
+      <g class="bike-and-bird">
+        <!-- bicycle wheels and subtle hubs -->
+        <g class="wheel">
+          <circle cx="315" cy="475" r="92" fill="none" stroke="#24364b" stroke-width="14"/>
+          <circle cx="315" cy="475" r="78" fill="none" stroke="#7fcbd2" stroke-width="4" stroke-dasharray="8 13"/>
+          <circle cx="315" cy="475" r="11" fill="#f2994a" stroke="#24364b" stroke-width="5"/>
+          <path d="M315 383v184M223 475h184M250 410l130 130M380 410L250 540" stroke="#24364b" stroke-width="3" opacity=".62"/>
+        </g>
+        <g class="wheel">
+          <circle cx="735" cy="475" r="92" fill="none" stroke="#24364b" stroke-width="14"/>
+          <circle cx="735" cy="475" r="78" fill="none" stroke="#7fcbd2" stroke-width="4" stroke-dasharray="8 13"/>
+          <circle cx="735" cy="475" r="11" fill="#f2994a" stroke="#24364b" stroke-width="5"/>
+          <path d="M735 383v184M643 475h184M670 410l130 130M800 410L670 540" stroke="#24364b" stroke-width="3" opacity=".62"/>
+        </g>
+
+        <!-- bike frame, fork, handlebar -->
+        <g fill="none" stroke="#3778c8" stroke-width="12" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M315 475 L430 335 L575 475 Z M430 335 L735 475 M575 475 L622 326 L735 475"/>
+          <path d="M610 326 L632 286 M617 285h76 M688 285l19 25"/>
+        </g>
+        <path d="M614 286q36-30 78 0" fill="none" stroke="#24364b" stroke-width="10" stroke-linecap="round"/>
+        <circle cx="575" cy="475" r="23" fill="#f2994a" stroke="#24364b" stroke-width="7"/>
+        <g class="pedal-crank" stroke="#24364b" stroke-width="7" stroke-linecap="round">
+          <path d="M575 475l38-33m-38 33l-38 33"/><path d="M613 442h29m-105 66h-29"/>
+        </g>
+
+        <!-- pelican body -->
+        <path d="M423 207c-45-6-74 31-72 78 2 42 37 70 84 65 36-4 66-22 91-54 11-14 17-34 9-53-12-29-58-30-112-36z" fill="#fffdf2" stroke="#24364b" stroke-width="8"/>
+        <path d="M391 277c-29 11-37 41-17 64 24 28 73 24 101 4-23-2-52-15-84-68z" fill="#f2dfa9" opacity=".9"/>
+        <path class="feather" d="M465 224q56-38 102-3-37 2-62 32-20-20-40-29z" fill="#fffdf2" stroke="#24364b" stroke-width="7"/>
+
+        <!-- neck and head -->
+        <path d="M439 220c-13-43 8-87 58-103 43-14 83 8 91 46 9 41-18 74-57 88-28 9-68 0-92-31z" fill="#fffdf2" stroke="#24364b" stroke-width="8"/>
+        <path d="M518 137q19-42 72-31c35 7 50 36 34 64-17 30-61 31-92 11" fill="#fffdf2" stroke="#24364b" stroke-width="8"/>
+        <!-- iconic bill and pouch -->
+        <path d="M595 154c57-30 121-25 188-1-31 18-78 31-135 30z" fill="#f2994a" stroke="#24364b" stroke-width="8" stroke-linejoin="round"/>
+        <path d="M626 178c18 39 65 65 116 48-20 51-87 62-119 22-15-19-15-49 3-70z" fill="#f6b86a" stroke="#24364b" stroke-width="8"/>
+        <path d="M647 207q36 21 80 8" fill="none" stroke="#d77d3d" stroke-width="5" opacity=".75"/>
+        <circle cx="584" cy="140" r="8" fill="#24364b"/>
+        <path d="M569 125q13-12 27-1" fill="none" stroke="#24364b" stroke-width="5" stroke-linecap="round"/>
+
+        <!-- legs, animated as a pair -->
+        <g class="leg-front" fill="none" stroke="#f2994a" stroke-width="15" stroke-linecap="round">
+          <path d="M464 323 L511 399 L575 475"/>
+        </g>
+        <g class="leg-back" fill="none" stroke="#e1853f" stroke-width="15" stroke-linecap="round">
+          <path d="M500 325 L457 405 L575 475"/>
+        </g>
+        <g fill="#f2994a" stroke="#24364b" stroke-width="6" stroke-linecap="round">
+          <path d="M569 475q-29 17-54 7"/><path d="M569 475q29 17 54 7"/>
+        </g>
+        <!-- wing and tail for silhouette -->
+        <path d="M410 239q-56 19-62 70 43 6 82-27 22-20-20-43z" fill="#e8f0e8" stroke="#24364b" stroke-width="8"/>
+        <path d="M357 292l-62 31 75 4" fill="#fffdf2" stroke="#24364b" stroke-width="8" stroke-linejoin="round"/>
+      </g>
+
+      <g transform="translate(38 38)">
+        <rect width="270" height="62" rx="31" fill="#fffdf2" opacity=".9"/>
+        <text x="30" y="40" font-size="22" font-weight="800" fill="#24364b">PELICAN PEDAL CLUB</text>
+      </g>
+    </svg>
+  </main>
+</body>
+</html>
